@@ -3,18 +3,28 @@ name: Git Version
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}   # checkout the correct branch name
-          fetch-depth: 0                # fetch the whole repo history
+    - name: generate build number
+      uses: zyborg/gh-action-buildnum@v1 
+      with:
+        gist_token: ${{ secrets.GIST_TOKEN }}
+        set_env: true
 
-      - name: GitTools
-        uses: GitTools/actions@v0.9.13
+    - name: print repo global build number
+      run: echo Global Build Number is $BUILDNUM_FOR_GLOBAL
+
+    - name: get existing build number
+      uses: zyborg/gh-action-buildnum@v1
+      id: lastBuildNum
+      with:
+        gist_token: ${{ secrets.GIST_TOKEN }}
+        skip_bump: true
+
+    - name: dump last build num
+      run: |
+        echo Global Build Number is ${{ steps.lastBuildNum.outputs.global_buildnum }}
+        echo Workflow Build Number is ${{ steps.lastBuildNum.outputs.workflow_buildnum }}
