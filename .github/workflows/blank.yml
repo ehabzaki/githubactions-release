@@ -1,5 +1,5 @@
 # .github/workflows/version.yml
-name: Git Version
+name: Version Increment
 
 on:
   push:
@@ -7,14 +7,14 @@ on:
       - main
 
 jobs:
-  lint:
+  version:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}   # checkout the correct branch name
-          fetch-depth: 0                # fetch the whole repo history
-
-      - name: Git Version
-        uses: codacy/git-version@2.2.0
+      - uses: actions/checkout@v2
+      - run: git config user.email "m.ehabzaki@gmail.com"
+      - run: git config user.name "ehabzaki"
+      - run: npm version minor -m "v%s"
+      - run: VERSION=$(node -p "require('./package.json').version")
+      - run: git tag ${VERSION}
+      - run: git push --follow-tags
+      - run: git push --tags
