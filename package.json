@@ -2,6 +2,7 @@
   "name": "githubactions-release",
   "description": "hello world test app",
   "version": "0.5.0",
+  "release": { "branches": [ "main" ] },
   "private": true,
   "devDependencies": {
     "@commitlint/cli": "^17.0.1",
