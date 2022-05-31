@@ -1,2 +1,2 @@
 # githubactions-release
-for testing 2d
+for testing 2
