@@ -1,2 +1,2 @@
 # githubactions-release
-for testing ss
+for testing ss2
