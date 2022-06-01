@@ -1,7 +1,7 @@
 {
   "name": "githubactions-release",
   "description": "hello world test app",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "release": { "branches": [ "main" ] },
   "private": true,
   "devDependencies": {
