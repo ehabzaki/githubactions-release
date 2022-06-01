@@ -17,9 +17,7 @@ jobs:
         node-version: 16
     - name: Add plugin for conventional commits
       run: npm install conventional-changelog-conventionalcommits
-      working-directory: ./.github/workflows
     - name: Release to GitHub
-      working-directory: ./.github/workflows
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         GIT_AUTHOR_NAME: ehabzaki
