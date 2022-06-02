@@ -1,6 +1,5 @@
 {
     "name": "githubactions-release",
-    "description": "hello world test app",
     "private": true
 
 }
