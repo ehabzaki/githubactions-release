@@ -1,5 +1,4 @@
 {
     "name": "githubactions-release",
-    "private": true,
-
+    "private": true
 }
