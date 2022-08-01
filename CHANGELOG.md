@@ -1,3 +1,10 @@
+# [0.15.0](https://github.com/ehabzaki/githubactions-release/compare/v0.14.0...v0.15.0) (2022-08-01)
+
+
+### Features
+
+* ddd ([ac5778c](https://github.com/ehabzaki/githubactions-release/commit/ac5778c1c25f6cd00b2efa4685492839b1ae42f1))
+
 # [0.14.0](https://github.com/ehabzaki/githubactions-release/compare/v0.13.1...v0.14.0) (2022-08-01)
 
 
