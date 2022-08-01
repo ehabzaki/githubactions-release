@@ -11,7 +11,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
     - name: Setup Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v1
       with:
         node-version: 16
     - name: Add plugin for conventional commits
@@ -19,3 +19,4 @@ jobs:
     - name: Release to GitHub
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      run: npx semantic-release --branches use-semantic-versioning
