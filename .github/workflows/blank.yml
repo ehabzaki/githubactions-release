@@ -17,8 +17,7 @@ jobs:
     - name: Add plugin for conventional commits
       run: npm install conventional-changelog-conventionalcommits
 
-    - run: npm run semantic-release
     - name: Release to GitHub
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      run: npx semantic-release --branches use-semantic-versioning
+      run: npx semantic-release --branches master
