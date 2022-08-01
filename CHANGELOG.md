@@ -1,3 +1,10 @@
+# [0.16.0](https://github.com/ehabzaki/githubactions-release/compare/v0.15.2...v0.16.0) (2022-08-01)
+
+
+### Features
+
+* Update README.md ([#27](https://github.com/ehabzaki/githubactions-release/issues/27)) ([5625c02](https://github.com/ehabzaki/githubactions-release/commit/5625c021e26ac4fc2b8fdf5ce24672de39cb3913))
+
 ## [0.15.2](https://github.com/ehabzaki/githubactions-release/compare/v0.15.1...v0.15.2) (2022-08-01)
 
 
