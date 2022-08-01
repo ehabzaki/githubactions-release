@@ -1,4 +1,10 @@
 {
-    "name": "githubactions-release",
-    "private": true
+  "scripts": {
+    "build": "tsc",
+    "compile": "ncc build lib/index.js --out compiled --license licenses.txt",
+    "dist": "npm run build && npm run compile"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.28.5"
+  }
 }
