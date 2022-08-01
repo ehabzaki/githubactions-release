@@ -1,3 +1,1 @@
-# githubactions-release
-for testing ss2gfdfggdf
-
+# dot-npmrc
