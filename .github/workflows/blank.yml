@@ -16,7 +16,7 @@ jobs:
         node-version: 16
     - name: Add plugin for conventional commits
       run: npm install conventional-changelog-conventionalcommits
-    - run: npm ci
+
     - run: npm run semantic-release
     - name: Release to GitHub
       env:
