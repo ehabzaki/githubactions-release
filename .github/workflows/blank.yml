@@ -1,11 +1,19 @@
-name: Release Actions
+name: Release Action
 on:
   push:
-    branches: [ master ]
+    branches:
+      - main
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.TOKEN }}
       - uses: actions/setup-node@v2
-      - run: npm ci && npm run dist && npx semantic-release
+        with:
+          node-version: 14
+      - run: npm ci && npm run dist
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
