@@ -1,25 +1,11 @@
-name: Release
+name: Release Actions
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: '*'
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16
-    - name: Add plugin for conventional commits
-      run: npm install conventional-changelog-conventionalcommits    
-    - run: npm ci
-  
-    - name: Release to GitHub
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      run: npx semantic-release --branches master
-
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm ci && npm run dist && npx semantic-release
