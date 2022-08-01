@@ -1,9 +1,9 @@
 name: Release
-
 on:
   push:
-    branches:
-      - master
+    branches: [ main ]
+  pull_request:
+    branches: '*'
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -16,7 +16,9 @@ jobs:
         node-version: 16
     - name: Add plugin for conventional commits
       run: npm install conventional-changelog-conventionalcommits
+    - run: npm ci
     - name: Release to GitHub
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      run: npx semantic-release --branches use-semantic-versioning
+      run: npm run semantic-release
+  #    run: npx semantic-release --branches use-semantic-versioning
