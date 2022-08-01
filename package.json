@@ -3,10 +3,6 @@
   "description": "GitHub action to generate dot npmrc for using GitHub npm registry.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "compile": "ncc build lib/index.js --out compiled --license licenses.txt",
-    "dist": "npm run build && npm run compile",
-    "test": "echo NOT_IMPLEMENTED",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
