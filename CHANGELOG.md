@@ -1,3 +1,10 @@
+## [0.15.1](https://github.com/ehabzaki/githubactions-release/compare/v0.15.0...v0.15.1) (2022-08-01)
+
+
+### Bug Fixes
+
+* fff ([12e411d](https://github.com/ehabzaki/githubactions-release/commit/12e411de0683a171304a54c926d2ba40cfba7060))
+
 # [0.15.0](https://github.com/ehabzaki/githubactions-release/compare/v0.14.0...v0.15.0) (2022-08-01)
 
 
