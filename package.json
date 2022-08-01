@@ -1,5 +1,7 @@
 {
     "name": "githubactions-release",
-    "private": true
-
+    "private": true,
+    "dependencies": {
+        "semantic-release": "^19.0.3"
+    }
 }
