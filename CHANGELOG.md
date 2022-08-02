@@ -1,3 +1,10 @@
+## [0.16.1](https://github.com/ehabzaki/githubactions-release/compare/v0.16.0...v0.16.1) (2022-08-02)
+
+
+### Bug Fixes
+
+* update readme ([9920bd0](https://github.com/ehabzaki/githubactions-release/commit/9920bd09b2673a00574e57f1ff9419144232aeb7))
+
 # [0.16.0](https://github.com/ehabzaki/githubactions-release/compare/v0.15.2...v0.16.0) (2022-08-01)
 
 
