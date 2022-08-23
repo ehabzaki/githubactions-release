@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 14
       - run: npm ci 
-      - run: npx semantic-release
+      - run: npm version minor
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           GIT_AUTHOR_NAME: ehabzaki
