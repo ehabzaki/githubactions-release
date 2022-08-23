@@ -3,7 +3,6 @@
   "description": "GitHub action to generate dot npmrc for using GitHub npm registry.",
   "main": "index.js",
   "scripts": {
-    "semantic-release": "semantic-release"
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags"
   },
