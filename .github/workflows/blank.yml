@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 14
       - run: npm ci 
-      - run: npm version minor
+      - run: npm version minor -m "Upgrade to %s for reasons"
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           GIT_AUTHOR_NAME: ehabzaki
