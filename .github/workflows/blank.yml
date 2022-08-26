@@ -5,8 +5,7 @@ on:
       - master
       - development
   pull_request:
-    types:
-      - closed
+    types: [closed, synchronize, labeled, unlabeled]
 jobs:
   release:
     if: github.event.pull_request.merged == true
@@ -37,5 +36,3 @@ jobs:
           then
            npm version minor -m "Bump version to %s ${{ steps.branch.outputs.NAME }}"
           fi
-          git add -A && git push
-          git push --tags
