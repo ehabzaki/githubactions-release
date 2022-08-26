@@ -1,20 +1,21 @@
-# .github/workflows/version.yml
-name: Git Version
-
+name: Release Action
 on:
   push:
     branches:
       - master
-
 jobs:
-  lint:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          ref: ${{ github.head_ref }}   # checkout the correct branch name
-          fetch-depth: 0                # fetch the whole repo history
-
-      - name: Git Version
-        uses: codacy/git-version@2.2.0
+          node-version: 14
+      - run: npm ci 
+      - run: npm version minor -m "Upgrade to %s for reasons"
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GIT_AUTHOR_NAME: ehabzaki
+          GIT_AUTHOR_EMAIL: m.ehabzaki@gmail.com
+          GIT_COMMITTER_NAME: ehabzaki
+          GIT_COMMITTER_EMAIL: m.ehabzaki@gmail.com
