@@ -32,10 +32,10 @@ jobs:
           label=$(echo "${{ toJson(github.event.pull_request.labels.*.name) }}")
           if echo $label |grep -E 'bug'; 
           then
-            npm version patch -m "Bump version to %s ${{ steps.branch.outputs.NAME }"
+            npm version patch -m "Bump version to %s ${{ steps.branch.outputs.NAME }}"
           elif  echo $label |grep -E 'enhancement';
           then
-           npm version minor -m "Bump version to %s ${{ steps.branch.outputs.NAME }"
+           npm version minor -m "Bump version to %s ${{ steps.branch.outputs.NAME }}"
           fi
           git add -A && git push
           git push --tags
