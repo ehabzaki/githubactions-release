@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - development
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -19,3 +20,6 @@ jobs:
           GIT_AUTHOR_EMAIL: m.ehabzaki@gmail.com
           GIT_COMMITTER_NAME: ehabzaki
           GIT_COMMITTER_EMAIL: m.ehabzaki@gmail.com
+
+      - uses: tonynguyenit18/github-action-custom-vars@v1
+      - run: echo $RECENT_MERGED_BRANCH_NAME
