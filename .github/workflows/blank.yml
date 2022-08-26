@@ -17,13 +17,31 @@ jobs:
         with:
           node-version: 14
       - run: npm ci 
-      - run: npm version minor -m "Upgrade to %s for reasons"
-        env:
+      - name: Set selected color
+        run: echo '::set-output name=NAME::${{ github.head_ref }}'
+        id: branch
+      - name: Get color
+        run: echo "The selected color is ${{ steps.branch.outputs.NAME }}"
+      - env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           GIT_AUTHOR_NAME: ehabzaki
           GIT_AUTHOR_EMAIL: m.ehabzaki@gmail.com
           GIT_COMMITTER_NAME: ehabzaki
           GIT_COMMITTER_EMAIL: m.ehabzaki@gmail.com
+        run: |
+          label=$(echo "${{ toJson(github.event.pull_request.labels.*.name) }}")
+          if echo $label |grep -E 'bug'; 
+          then
+            npm version patch -m "Bump version to %s ${{ steps.branch.outputs.NAME }"
+          elif  echo $label |grep -E 'enhancement';
+          then
+           npm version minor -m "Bump version to %s ${{ steps.branch.outputs.NAME }"
+          fi
+          git add -A && git push
+          git push --tags
+         
 
-      - run: echo ${{ github.head_ref }}
+
+#       - run: npm version minor -m "Upgrade to %s for reasons"
+#         env:
 
