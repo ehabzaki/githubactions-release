@@ -21,5 +21,6 @@ jobs:
           GIT_COMMITTER_NAME: ehabzaki
           GIT_COMMITTER_EMAIL: m.ehabzaki@gmail.com
 
-      - uses: tonynguyenit18/github-action-custom-vars@v1
-      - run: echo $RECENT_MERGED_BRANCH_NAME
+      - if: github.event.pull_request.merged == true
+        run: echo ${{ github.head_ref }}
+
