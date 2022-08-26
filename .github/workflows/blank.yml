@@ -39,9 +39,3 @@ jobs:
           fi
           git add -A && git push
           git push --tags
-         
-
-
-#       - run: npm version minor -m "Upgrade to %s for reasons"
-#         env:
-
