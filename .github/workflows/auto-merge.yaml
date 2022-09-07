@@ -28,6 +28,7 @@ jobs:
           github-token: ${{ secrets.TOKEN }}
 
           # The name of the PR author to enable automerge for
+          allowed-author: "ehabzaki"
 
           # Allowed values: MERGE | SQUASH | REBASE
           # Defaults to MERGE
