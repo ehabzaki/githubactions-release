@@ -1,0 +1,35 @@
+name: Release Action
+
+on:
+  # See note below about using pull_request_target
+  pull_request_target:
+  push:
+    branches:
+      - master
+      - development
+  pull_request:
+    types: [synchronize, opened]
+jobs:
+  automerge:
+    name: Enable automerge on dependabot PRs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enable automerge on dependabot PRs
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GIT_AUTHOR_NAME: ehabzaki
+          GIT_AUTHOR_EMAIL: m.ehabzaki@gmail.com
+          GIT_COMMITTER_NAME: ehabzaki
+          GIT_COMMITTER_EMAIL: m.ehabzaki@gmail.com
+        uses: daneden/enable-automerge-action@v1
+        with:
+          # A personal access token that you have generated and saved in the
+          # repo or org’s encrypted secrets
+          github-token: ${{ secrets.TOKEN }}
+
+          # The name of the PR author to enable automerge for
+          allowed-author: "ehabzaki"
+
+          # Allowed values: MERGE | SQUASH | REBASE
+          # Defaults to MERGE
+          merge-method: MERGE
