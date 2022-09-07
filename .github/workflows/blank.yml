@@ -17,7 +17,7 @@ jobs:
           node-version: 14
       - run: npm ci 
       - name: Set selected color
-        run: echo '::set-output name=NAME::${{ github.head_ref }}'
+        run: echo '::set-output name=NAME::$(git describe --tags `git rev-list --tags --max-count=1`)'
         id: branch
       - name: Get color
         run: echo "The selected color is ${{ steps.branch.outputs.NAME }}"
@@ -40,7 +40,7 @@ jobs:
             npm version minor
           fi
       - name: create pull request
-        run: gh pr create -B development -H version-enhancement --title 'version 0.26.0' --body 'Created by Github action'
+        run: gh pr create -B development -H version-enhancement --title 'version ${{ steps.branch.outputs.NAME }}' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           GIT_AUTHOR_NAME: ehabzaki
