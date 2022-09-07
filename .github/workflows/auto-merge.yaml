@@ -3,7 +3,12 @@ name: Release Action
 on:
   # See note below about using pull_request_target
   pull_request_target:
-
+  push:
+    branches:
+      - master
+      - development
+  pull_request:
+    types: [synchronize, opened]
 jobs:
   automerge:
     name: Enable automerge on dependabot PRs
@@ -20,11 +25,9 @@ jobs:
         with:
           # A personal access token that you have generated and saved in the
           # repo or org’s encrypted secrets
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          github-token: ${{ secrets.TOKEN }}
 
           # The name of the PR author to enable automerge for
-          # Defaults to dependabot[bot]
-          allowed-author: "dependabot[bot]"
 
           # Allowed values: MERGE | SQUASH | REBASE
           # Defaults to MERGE
