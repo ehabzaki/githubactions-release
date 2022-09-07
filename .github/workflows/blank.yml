@@ -33,8 +33,10 @@ jobs:
           then
             git checkout -b version-bug
             npm version patch
+            git push --set-upstream origin version-bug
           elif  echo $label |grep -E 'enhancement';
           then
             git checkout -b version-enhancement
-           npm version minor
+            npm version minor
+            git push --set-upstream origin version-bug
           fi
