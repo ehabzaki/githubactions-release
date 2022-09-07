@@ -29,14 +29,13 @@ jobs:
           GIT_COMMITTER_EMAIL: m.ehabzaki@gmail.com
         run: |
           label=$(echo "${{ toJson(github.event.pull_request.labels.*.name) }}")
+          git config --global --add --bool push.autoSetupRemote true
           if echo $label |grep -E 'bug'; 
           then
             git checkout -b version-bug
             npm version patch
-            git push --set-upstream origin version-bug
           elif  echo $label |grep -E 'enhancement';
           then
             git checkout -b version-enhancement
             npm version minor
-            git push --set-upstream origin version-bug
           fi
