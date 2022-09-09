@@ -3,14 +3,7 @@
   "description": "GitHub action to generate dot npmrc for using GitHub npm registry.",
 
   "release": {
-    "branches": ["master", "development"],
-    "publish": [{
-        "path": "@semantic-release/npm",
-        "npmPublish": false
-      }, 
-      "@semantic-release/git", 
-      "@semantic-release/github"
-    ]
+    "branches": ["master", "development"]
   },
   "dependencies": {
     "@actions/artifact": "^1.1.0",
