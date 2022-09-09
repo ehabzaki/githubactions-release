@@ -1,11 +1,11 @@
 name: Release Action
-on:
+on:  
   push:
-    branches:
-      - master
-      - development
   pull_request:
-    types: [opened]
+    branches:
+      - development
+    types: [opened, reopened]
+
 jobs:
   release:
     runs-on: ubuntu-latest
