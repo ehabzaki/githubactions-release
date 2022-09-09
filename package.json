@@ -2,9 +2,7 @@
   "name": "githubactions-release",
   "description": "GitHub action to generate dot npmrc for using GitHub npm registry.",
 
-  "release": {
-    "branches": ["master", "development"]
-  },
+
   "dependencies": {
     "@actions/artifact": "^1.1.0",
     "@actions/cache": "^3.0.0",
