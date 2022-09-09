@@ -2,9 +2,7 @@
   "name": "githubactions-release",
   "description": "GitHub action to generate dot npmrc for using GitHub npm registry.",
   "main": "index.js",
-  "scripts": {
-    "postversion": "git add -A && git push && git push --tags"
-  },
+
   {
     "release": {
       "branches": ["master", "development"]
