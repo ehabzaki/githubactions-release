@@ -1,7 +1,6 @@
 {
   "name": "githubactions-release",
   "description": "GitHub action to generate dot npmrc for using GitHub npm registry.",
-  "main": "index.js",
 
   {
     "release": {
