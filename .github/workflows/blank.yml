@@ -23,7 +23,7 @@ jobs:
           if [ "${BRANCH}" != "master" ] && [ "${BRANCH}" != "development" ]; then
             sed -i -E 's@(targetRevision:) (.*)@\1 '"*-$BRANCH"'@g' staging/application.yaml;\
             if [ -n "$(git status --porcelain)" ]; then
-              git add argocd/;\
+              git add staging/;\
               git commit -m "Update the target reversion to *-$BRANCH"
               git push;
             fi
