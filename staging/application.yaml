@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: staging-intl-payments-set
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - market: common
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: staging-{{market}}-intl-payments
+    spec:
+      destination:
+        name: group-staging
+        namespace: '{{market}}'
+      project: group-staging
+      source:
+        chart: intl-payments
+        helm:
+          releaseName: intl-payments
+          valueFiles:
+            - http://aws-s3-proxy/values/staging/{{market}}.yaml
+        repoURL: http://aws-s3-proxy/staging/
+        targetRevision: v1.4.4-fix-github-token-ebad5c0
+      syncPolicy:
+        automated:
+          selfHeal: true
