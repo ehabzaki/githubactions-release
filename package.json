@@ -1,8 +1,6 @@
 {
   "name": "githubactions-release",
   "description": "GitHub action to generate dot npmrc for using GitHub npm registry.",
-
-
   "dependencies": {
     "@actions/artifact": "^1.1.0",
     "@actions/cache": "^3.0.0",
@@ -16,5 +14,5 @@
     "@semantic-release/git": "github:semantic-release/git",
     "semantic-release": "^19.0.5"
   },
-  "version": "0.26.0"
+  "version": "0.25.0"
 }
