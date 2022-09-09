@@ -25,7 +25,7 @@ spec:
           valueFiles:
             - http://aws-s3-proxy/values/staging/{{market}}.yaml
         repoURL: http://aws-s3-proxy/staging/
-        targetRevision: *-dfsfsf
+        targetRevision: *-jnjn
       syncPolicy:
         automated:
           selfHeal: true
