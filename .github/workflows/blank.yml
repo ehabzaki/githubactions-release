@@ -1,26 +1,16 @@
 name: Release Action
-on:
+on:  
   push:
-    branches:
-      - master
-      - development
   pull_request:
-    types: [closed, synchronize, labeled, unlabeled]
+    branches:
+      - development
+    types: [opened, reopened]
+
 jobs:
   release:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - run: npm ci 
-      - name: Set selected color
-        run: echo '::set-output name=NAME::$(git describe --tags `git rev-list --tags --max-count=1`)'
-        id: branch
-      - name: Get color
-        run: echo "The selected color is ${{ steps.branch.outputs.NAME }}"
       - env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           GIT_AUTHOR_NAME: ehabzaki
@@ -28,22 +18,13 @@ jobs:
           GIT_COMMITTER_NAME: ehabzaki
           GIT_COMMITTER_EMAIL: m.ehabzaki@gmail.com
         run: |
-          label=$(echo "${{ toJson(github.event.pull_request.labels.*.name) }}")
-          git config --global --add --bool push.autoSetupRemote true
-          if echo $label |grep -E 'bug'; 
-          then
-            git checkout -b version-bug
-            npm version patch
-          elif  echo $label |grep -E 'enhancement';
-          then
-            git checkout -b version-enhancement
-            npm version minor
-          fi
-      - name: create pull request
-        run: gh pr create -B development -H version-enhancement --title 'version ${{ steps.branch.outputs.NAME }}' --body 'Created by Github action'
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          GIT_AUTHOR_NAME: ehabzaki
-          GIT_AUTHOR_EMAIL: m.ehabzaki@gmail.com
-          GIT_COMMITTER_NAME: ehabzaki
-          GIT_COMMITTER_EMAIL: m.ehabzaki@gmail.com
+          BRANCH=${GITHUB_REF##*/}
+          VERSION=$(git tag --sort=-creatordate | head -1)
+          if [ "${BRANCH}" != "master" ] && [ "${BRANCH}" != "development" ]; then
+            sed -i -E 's@(targetRevision:) (.*)@\1 '"*-$BRANCH"'@g' staging/application.yaml;\
+            if [ -n "$(git status --porcelain)" ]; then
+              git add staging/;\
+              git commit -m "Update the target reversion to *-$BRANCH"
+              git push;
+            fi
+          fi      
