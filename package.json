@@ -5,6 +5,11 @@
   "scripts": {
     "postversion": "git add -A && git push && git push --tags"
   },
+  {
+    "release": {
+      "branches": ["master", "development"]
+    }
+  },
   "dependencies": {
     "@actions/artifact": "^1.1.0",
     "@actions/cache": "^3.0.0",
